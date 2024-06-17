@@ -14,17 +14,28 @@ Everything about [Jenkins!](https://jenkins.io/)
 
 ### Docker
 
-1. Docker pull Jenkins/jenkins:latest
+1. Pull Docker image
+
+   ```
+   docker pull jenkins/jenkins:latest
+   ```
+
 2. Run Docker container
 
    ```
-   docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:latest
+   docker run -d -v jenkins_home:/var/jenkins_home -p <YOUR_PORT>:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:latest
    ```
 
 3. Get the initial password
 
    ```
-   docker exec -it <container_id> cat /var/jenkins_home/secrets/initialAdminPassword
+   docker exec -it <CONTAINER_ID> cat /var/jenkins_home/secrets/initialAdminPassword
+   ```
+
+   or
+
+   ```
+   docker logs <CONTAINER_ID>
    ```
 
 4. Open Jenkins in browser
